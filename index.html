@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Triage Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Animated tsParticles Background -->
+    <div id="tsparticles" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></div>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar glass-panel">
+            <h1 class="logo">Triage<span>AI</span></h1>
+            <ul class="nav-links">
+                <li class="active" data-tab="dashboard-home">Dashboard</li>
+                <li data-tab="report-bug">Report Bug</li>
+                <li data-tab="triage-status">Triage Status</li>
+                <li data-tab="incoming-bugs">Incoming Bugs</li>
+                <li data-tab="developer-map">Developer Map</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Nav Bar -->
+            <header class="top-nav glass-panel">
+                <div class="search-wrap">
+                    <span style="opacity: 0.6; margin-right: 10px;">🔍</span>
+                    <input type="text" placeholder="Search system logs, dev activity..." class="search-input" />
+                </div>
+                <div class="header-status">
+                    <div class="pulse-dot"></div>
+                    <span>AI Kernel Online</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Home View -->
+            <section id="dashboard-home" class="view active">
+                <h2 class="view-title">Command Center</h2>
+                <!-- 4 Stats Cards -->
+                <div class="dash-grid">
+                    <div class="dash-card glass-panel">
+                        <h4>Total Ingestion</h4>
+                        <div class="dash-val" id="stat-total">42,091</div>
+                    </div>
+                    <div class="dash-card glass-panel">
+                        <h4>Critical P0 Issues</h4>
+                        <div class="dash-val" id="stat-critical" style="color: var(--priority-p0);">31</div>
+                    </div>
+                    <div class="dash-card glass-panel">
+                        <h4>AI Accuracy</h4>
+                        <div class="dash-val" id="stat-accuracy" style="color: var(--accent-color);">98.4%</div>
+                    </div>
+                    <div class="dash-card glass-panel">
+                        <h4>Auto-Assigned</h4>
+                        <div class="dash-val" id="stat-assigned" style="color: var(--priority-p3);">8,410</div>
+                    </div>
+                </div>
+
+                <!-- Live AI Feed -->
+                <div class="live-ai-panel glass-panel">
+                    <div class="live-header">
+                        <h3>⚡ Live Neural Routing</h3>
+                        <div class="pulse-dot"></div>
+                    </div>
+                    <div class="feed-list" id="ai-feed">
+                        <div class="feed-item">Connection established... Awaiting logs.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Report Bug View -->
+            <section id="report-bug" class="view hidden">
+                <h2 class="view-title">Report New Bug</h2>
+                <div class="form-container glass-panel">
+                    <label for="bug-input">Error Log or Natural Language Description</label>
+                    <textarea id="bug-input" placeholder="e.g. Uncaught TypeError in src/cart.js... or 'The checkout API is failing with 500 error.'"></textarea>
+                    <button id="submit-bug" class="btn primary-btn">Analyze & Triage</button>
+                </div>
+                
+                <!-- Action Log (Hidden initially) -->
+                <div id="action-log-container" class="action-log-container glass-panel hidden">
+                    <h3>Simulated GitHub Actions</h3>
+                    <ul id="action-log" class="action-list">
+                        <!-- Action items will append here -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Triage Status View -->
+            <section id="triage-status" class="view hidden">
+                <h2 class="view-title">Triage Status</h2>
+                <div id="latest-triage" class="glass-panel text-center">
+                    <p class="empty-state">No bugs triaged yet. Report one to see the results here.</p>
+                </div>
+            </section>
+
+            <!-- Incoming Bugs View -->
+            <section id="incoming-bugs" class="view hidden">
+                <h2 class="view-title">Incoming Bugs Queue</h2>
+                <div class="glass-panel">
+                    <div class="table-responsive">
+                        <table id="bugs-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Priority</th>
+                                    <th>Category</th>
+                                    <th>Component/File</th>
+                                    <th>Assigned To</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bugs-tbody">
+                                <!-- Bug rows will append here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Developer Map View -->
+            <section id="developer-map" class="view hidden">
+                <h2 class="view-title">Developer Map</h2>
+                <div class="glass-panel">
+                    <div id="dev-map-grid" class="dev-map-grid">
+                        <!-- Dev cards will build here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
