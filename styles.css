@@ -672,3 +672,87 @@ tr:hover td {
 .nav-links li.active::before {
     display: none;
 }
+
+/* =========================================================
+   Responsive Design (Mobile & Tablet Support)
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .dash-grid { grid-template-columns: repeat(2, 1fr); }
+    .main-content { padding: 30px; }
+    .triage-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .app-container { 
+        flex-direction: column; 
+    }
+    
+    .sidebar { 
+        width: 100%; 
+        padding: 16px; 
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        flex-shrink: 0;
+    }
+    
+    .logo { 
+        margin-bottom: 16px; 
+        font-size: 1.6rem; 
+    }
+    
+    .nav-links { 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 8px; 
+    }
+    
+    .nav-links li { 
+        padding: 10px 16px; 
+        margin: 0; 
+        font-size: 0.9rem; 
+        white-space: nowrap;
+    }
+
+    .main-content { 
+        padding: 20px 16px; 
+        height: auto; 
+        overflow-y: visible; /* Let the window scroll on mobile instead of inner scroll */
+    }
+    
+    .top-nav { 
+        flex-direction: column; 
+        gap: 16px; 
+        align-items: flex-start; 
+    }
+    
+    .search-input { width: 100%; }
+    .search-wrap { width: 100%; display: flex; align-items: center;}
+    
+    .view-title { font-size: 1.8rem; margin-bottom: 24px; text-align: center; }
+    
+    .dash-grid { grid-template-columns: 1fr; gap: 16px;}
+    .triage-grid { grid-template-columns: 1fr; gap: 16px;}
+    
+    /* Force table to scroll horizontally if it's too wide */
+    table { min-width: 600px; }
+    .table-responsive { 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+    }
+    
+    .dev-map-grid { grid-template-columns: 1fr; gap: 16px; }
+    
+    .form-container { padding: 20px; }
+    textarea { height: 120px; }
+}
+
+@media (max-width: 480px) {
+    .nav-links { flex-direction: column; width: 100%; }
+    .nav-links li { width: 100%; justify-content: center; }
+    .header-status { font-size: 0.8rem; width: 100%; justify-content: center; margin-top: 10px;}
+    .btn { width: 100%; }
+    .triage-card { padding: 20px; }
+}
